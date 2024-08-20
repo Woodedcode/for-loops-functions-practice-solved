@@ -5,7 +5,9 @@
 
 export function getClientWithNoMoney(array) {
   // Your code goes here...
-
+  return array
+  .filter(account => account.balance === 0)
+  .map(account => account.name)
 }
 
 // === TEST YOURSELF ===
