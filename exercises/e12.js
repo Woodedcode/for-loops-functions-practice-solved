@@ -6,7 +6,19 @@
 
 export function getAllDepositsGreaterThanOneHundred(array) {
   // Your code goes here...
+  let result = [];
 
+  array.forEach(account => {
+    if (account.deposits) {
+      account.deposits.forEach(deposit => {
+        if (deposit > 100) {
+          result.push(deposit);
+        }
+      });
+    }
+  });
+
+  return result;
 }
 
 
