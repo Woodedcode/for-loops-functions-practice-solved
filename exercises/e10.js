@@ -4,10 +4,15 @@
 // getClientsWithLetterInName(bankAccounts, 'e') => ['Kevin', 'Steven', ...]
 
 export function getClientsWithLetterInName(array, letter) {
-  // Use filter to find names containing the given letter, case insensitive
-  return array
-    .filter(account => account.name.toLowerCase().includes(letter.toLowerCase()))
-    .map(account => account.name);
+  let result = [];
+
+  for (let account of array) {
+    if (account.name.toLowerCase().includes(letter.toLowerCase())) {
+      result.push(account.name);
+    }
+  }
+
+  return result;
 }
 
 // === TEST YOURSELF ===
