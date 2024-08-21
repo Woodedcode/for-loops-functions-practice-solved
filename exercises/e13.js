@@ -10,16 +10,18 @@
 // ]
 
 export function getAllAccountsWithSumsOfDepositsLess2000(array) {
-    // Your code goes here...
-    return array.filter(account => {
-      if (!account.deposits || account.deposits.length === 0) {
-        return true; 
-      } else {
-        const totalDeposits = account.deposits.reduce((total, deposit) => total + deposit, 0);
-        return totalDeposits < 2000;
-      }
-    });
+  let result = [];
+
+  for (const account of array) {
+    const totalDeposits = account.deposits ? account.deposits.reduce((total, deposit) => total + deposit, 0) : 0;
+
+    if (totalDeposits < 2000) {
+      result.push(account);
+    }
   }
+
+  return result;
+}
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-13"
