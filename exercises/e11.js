@@ -5,13 +5,21 @@
 // getAllWithdrawals(bankAccounts) => [3432, 0, 43242.34, 0, 23432]
 
 export function getAllWithdrawals(array) {
-  return array.map(account => {
+  let result = [];
+
+  for (let account of array) {
     if (account.withdrawals) {
-      return account.withdrawals.reduce((total, amount) => total + amount, 0);
+      let totalWithdrawals = 0;
+      for (let withdrawal of account.withdrawals) {
+        totalWithdrawals += withdrawal;
+      }
+      result.push(totalWithdrawals);
     } else {
-      return 0;
+      result.push(0);
     }
-  });
+  }
+
+  return result;
 }
 
 // === TEST YOURSELF ===
