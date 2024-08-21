@@ -4,18 +4,22 @@
 // Check every bank account balance and return the array of bank accounts with a wrong balance
 // Array example: bankAccounts in /data/data.js
 // getClientsWithWrongBalance(bankAccounts) => [{ name: 'Name1', balance: 32, ... }, { name: 'Name2', balance: 3523, ... }]
-
 export function getClientsWithWrongBalance(array) {
-  // Your code goes here...
-  return array.filter(account => {
+  let wrongBalances = [];
+
+  for (let account of array) {
     const totalDeposits = account.deposits ? account.deposits.reduce((total, deposit) => total + deposit, 0) : 0;
 
     const totalWithdrawals = account.withdrawals ? account.withdrawals.reduce((total, withdrawal) => total + withdrawal, 0) : 0;
 
     const expectedBalance = totalDeposits - totalWithdrawals;
 
-    return account.balance !== expectedBalance;
-  });
+    if (account.balance !== expectedBalance) {
+      wrongBalances.push(account);
+    }
+  }
+
+  return wrongBalances;
 }
 
 
