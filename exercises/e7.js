@@ -4,14 +4,28 @@
 // Array example: bankAccounts in /data/data.js
 // getClientWithLeastBalance(bankAccounts) => [{ name: 'SomeName', balance: 32, ... }]
 
-export function getClientWithNoMoney(array) {
-  let result = []
+export function getClientWithLeastPositiveBalance(array) {
+  let positiveBalanceAccounts = [];
 
-  for (let i = 0; i < array.length; i++)
-    if (array[i].balance === 0) {
-      result.push(array[i].name)
+  for (let account of array) {
+    if (account.balance > 0) {
+      positiveBalanceAccounts.push(account);
     }
-    return result
+  }
+
+  if (positiveBalanceAccounts.length === 0) {
+    return [];
+  }
+
+  let accountWithLeastBalance = positiveBalanceAccounts[0];
+
+  for (let account of positiveBalanceAccounts) {
+    if (account.balance < accountWithLeastBalance.balance) {
+      accountWithLeastBalance = account;
+    }
+  }
+
+  return [accountWithLeastBalance];
 }
 
 // === TEST YOURSELF ===
