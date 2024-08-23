@@ -5,20 +5,17 @@
 // flatArrays([['d', 'r'], 'z', 'b', ['f', 'y']]) => ['d', 'r', 'z', 'b', 'f', 'y']
 // NOTE: You can NOT use the array.flat() method in your code
 
-export function flatArrays(array) {
-  let flatArray = [];
+export function doesArrayInclude(array, value) {
+  let found = false;
 
   for (let item of array) {
-    if (Array.isArray(item)) {
-      for (let subItem of item) {
-        flatArray.push(subItem);
-      }
-    } else {
-      flatArray.push(item);
+    if (item === value) {
+      found = true;
+      break;
     }
   }
 
-  return flatArray;
+  return found;
 }
 
 
