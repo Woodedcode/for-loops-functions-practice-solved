@@ -9,12 +9,13 @@
 
 export function getAverage(array) {
   // Your code goes here...
-  let sum = 0
-  for (let i = 0; i < array.length; i++){
-    const arrayItem = array[i]
-    sum += arrayItem
+  let sum = 0;
+
+  for (let num of array) {
+    sum += num;
   }
-  return sum/array.length
+
+  return sum / array.length;
 }
 
 
@@ -27,13 +28,15 @@ export function getAverage(array) {
 
 export function getStringSum(str) {
   // Your code goes here...
-  let answer = 0
-  str.split('').forEach(item =>{
-    if(parseInt(item)){
-      answer = answer + parseInt(item)
+  let totalSum = 0;
+  
+  for (let char of str) {
+    if (char >= '0' && char <= '9') {
+      totalSum += Number(char);
     }
-  })
-  return answer
+  }
+
+  return totalSum;
 }
 
 
